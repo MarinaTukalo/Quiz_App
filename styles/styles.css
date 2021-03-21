@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #eeedec;
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
+}
+
+.container {
+  max-width: 400px;
+}
+
+#minutes,
+#seconds {
+  width: 2rem;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: black;
+  text-align: right;
+}
+/*# sourceMappingURL=styles.css.map */
