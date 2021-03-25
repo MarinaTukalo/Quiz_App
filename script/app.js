@@ -88,40 +88,45 @@ const getQuestion = (data) => {
                 <label class="answer ml-3">${answers[i]}</label>
             <br>
             `;
-
-        /* check answers */
-        let score = 0;
-        checkAnswer.addEventListener('click', e => {
-            e.preventDefault();
-            result.classList.remove('d-none');
-
-            let userAnswer = allAnswers.querySelector('.answersBox:checked');
-            console.log(userAnswer);
-            // if (!userAnswer) {
-            //     alert('please select one of the answers');
-            // } else {
-            if (entries[count - 1].correct_answer === userAnswer.value) {
-                displayCorrect.style.backgroundColor = 'lightgreen';
-                displayCorrect.innerHTML = 'Your answer is right';
-                score += 10;
-            } else {
-                displayCorrect.style.backgroundColor = 'coral';
-                displayCorrect.innerHTML = `ups..wrong. The right one is "${entries[count-1].correct_answer}"`;
-            }
-            nextBtn.classList.remove('disabled');
-
-            let output = 0;
-            const timer = setInterval(() => {
-                result.querySelector('span').textContent = `${output}%`;
-                if (output === score) {
-                    clearInterval(timer);
-                } else {
-                    output++;
-                }
-            }, 10);
-
-        });
     }
+    /* check answers */
+    let score = 0;
+    checkAnswer.addEventListener('click', e => {
+        e.preventDefault();
+        result.classList.remove('d-none');
+
+        let userAnswer = document.getElementsByClassName('answersBox');
+        let checkedOption;
+        for (let i = 0; i < userAnswer.length; i++) {
+            if (userAnswer[i].checked) {
+                checkedOption = userAnswer[i].value;
+                console.log(checkedOption);
+            }
+        }
+        // if (!userAnswer) {
+        //     alert('please select one of the answers');
+        // } else {
+        if (entries[count - 1].correct_answer === checkedOption) {
+            displayCorrect.style.backgroundColor = 'lightgreen';
+            displayCorrect.innerHTML = 'Your answer is right';
+            score += 10;
+        } else {
+            displayCorrect.style.backgroundColor = 'coral';
+            displayCorrect.innerHTML = `ups..wrong. The right one is "${entries[count-1].correct_answer}"`;
+        }
+        nextBtn.classList.remove('disabled');
+
+        let output = 0;
+        const timer = setInterval(() => {
+            result.querySelector('span').textContent = `${output}%`;
+            if (output === score) {
+                clearInterval(timer);
+            } else {
+                output++;
+            }
+        }, 10);
+
+    });
 };
 
 
