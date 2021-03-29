@@ -1,14 +1,13 @@
-////////// js DOM manipulation
+/// js DOM manipulation
 const main = document.getElementById('main');
 const result = document.querySelector('.result');
-const printName = document.querySelector('.lead p');
 const startQuiz = document.getElementById('startQuiz');
 const nextBtn = document.getElementById('nextBtn');
 const checkAnswer = document.getElementById('checkAnswer');
 const allAnswers = document.getElementById('allAnswers');
 const displayCorrect = document.getElementById('displayCorrect');
 
-////// API connect
+/// API connect
 const getQuestions = async() => {
     const query = 'https://opentdb.com/api.php?amount=10&type=multiple';
     const response = await fetch(query);
@@ -19,7 +18,6 @@ const getQuestions = async() => {
 /// start quiz
 startQuiz.addEventListener('click', e => {
     e.preventDefault();
-    greeting();
 
     getQuestions()
         .then(data => updateUI(data))
@@ -50,9 +48,13 @@ const updateUI = (data) => {
                 getQuestion(data);
                 count++;
             } else {
-                main.innerHTML = 'No more questions. Do you want to play this quiz again? Just reload this page';
+                main.innerHTML = `
+                <div class="m-4">It was the last question out of 10. 
+                Do you want to play this quiz again? Just wait for 5 sec</div>`;
+                setTimeout(() => {
+                    location.reload();
+                }, 5000);
             }
-
         });
     }
 };
@@ -89,30 +91,32 @@ const getQuestion = (data) => {
             <br>
             `;
     }
+
     /* check answers */
     let score = 0;
     checkAnswer.addEventListener('click', e => {
         e.preventDefault();
         result.classList.remove('d-none');
+        displayCorrect.classList.remove('d-none');
 
         let userAnswer = document.getElementsByClassName('answersBox');
         let checkedOption;
         for (let i = 0; i < userAnswer.length; i++) {
             if (userAnswer[i].checked) {
                 checkedOption = userAnswer[i].value;
-                console.log(checkedOption);
             }
         }
-        // if (!userAnswer) {
-        //     alert('please select one of the answers');
-        // } else {
+
         if (entries[count - 1].correct_answer === checkedOption) {
-            displayCorrect.style.backgroundColor = 'lightgreen';
-            displayCorrect.innerHTML = 'Your answer is right';
+            let words = ['Good for you!', 'That’s really nice', 'Superb', 'That’s great!', 'You’ve got it made', 'Way to go!', 'Terrific', 'That’s the way to do it!', 'Good thinking', 'Marvelous', 'Keep up the good work', 'That’s it!', 'You’re on the right track now!', 'You haven’t missed a thing', 'Outstanding!', 'Fantastic!', 'You’re doing a good job', 'Good work', 'Right on!', 'Well, look at you go!', 'Tremendous!', 'That’s RIGHT!', 'Perfect!', 'You must have been practicing!', 'Nice going', 'Great!', 'You remembered!', 'WOW!', 'Wonderful!', 'You’re really working hard today', 'I knew you could do it!', 'I’m very proud of you', 'Fine!', 'Super!', 'That’s good', 'Good job', 'Keep it up!', 'Good remembering', 'Congratulations', 'Nothing can stop you now', 'Exactly right!', 'Excellent!', 'Sensational!', 'You’re doing beautifully', 'I’ve never seen anyone do it better', 'You’ve just mastered that!', 'You are very good at that'];
+            let randomNumber = Math.round(Math.random() * (words.length - 1));
+
+            displayCorrect.style.backgroundColor = '#44d134';
+            displayCorrect.innerHTML = `<p class="p-3">${words[randomNumber]}</p>`;
             score += 10;
         } else {
-            displayCorrect.style.backgroundColor = 'coral';
-            displayCorrect.innerHTML = `ups..wrong. The right one is "${entries[count-1].correct_answer}"`;
+            displayCorrect.style.backgroundColor = '#e5245d';
+            displayCorrect.innerHTML = `<p class="p-3">ups..wrong. The right one is ${entries[count-1].correct_answer}</p>`;
         }
         nextBtn.classList.remove('disabled');
 
@@ -125,29 +129,5 @@ const getQuestion = (data) => {
                 output++;
             }
         }, 10);
-
     });
 };
-
-
-//// greet user function
-const greeting = () => {
-    const form = document.querySelector('form');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const userName = form.userName.value.trim();
-        form.reset();
-
-        printName.innerHTML = `Hello ${userName}`;
-        if (result.classList.contains('d-none')) {
-            result.classList.remove('d-none');
-        }
-    });
-};
-
-/*
-- radio box - should be clicked only once
-- greeting() - use of the function?
-- localstorage use for score, user info(e-mail. feedback message)?
-*/
