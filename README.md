@@ -4,7 +4,8 @@
   <img width="700" src="layout.png">
 </p>
 
-A quiz application written in HTML5, JavaScript ES6 and ES7, Sass and the API from [the Open Trivia Database](https://opentdb.com).
+The Quiz application is written in HTML5, JavaScript ES6 and ES7, Sass. 
+The questions and answers for the quiz app are coming from the API [the Open Trivia Database](https://opentdb.com).
 
 The user has 10 random questions of different category and diffuculty with 4 possible answers each. 
 After chosing the answer and clicking on 'check', the user receives a message marked by the color green or red, if it's right or wrong. 
