@@ -86,7 +86,7 @@ const getQuestion = (data) => {
     allAnswers.innerHTML = '';
     for (let i = 0; i < answers.length; i++) {
         allAnswers.innerHTML += `
-            <input class="answersBox" type="radio" value="${answers[i]}">
+            <input class="answersBox" name='radio' type="radio" value="${answers[i]}">
                 <label class="answer ml-3">${answers[i]}</label>
             <br>
             `;
@@ -100,7 +100,7 @@ const getQuestion = (data) => {
         displayCorrect.classList.remove('d-none');
 
         let userAnswer = document.getElementsByClassName('answersBox');
-        let checkedOption;
+        let checkedOption = '';
         for (let i = 0; i < userAnswer.length; i++) {
             if (userAnswer[i].checked) {
                 checkedOption = userAnswer[i].value;
