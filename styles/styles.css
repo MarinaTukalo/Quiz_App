@@ -1,28 +1,29 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Almarai', sans-serif;
 }
 
 body {
-  background: #eeedec;
-  letter-spacing: 0.2em;
-  font-size: 0.85em;
+  background: #dfdcd7;
+  letter-spacing: 0.15em;
+  font-size: 0.9em;
 }
 
 #appHeading {
-  font-size: 5.5em;
-  color: #295E7A;
-  font-family: 'Neucha', cursive;
+  font-size: 6.5em;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
 }
 
 span {
-  color: #30a15e;
+  color: #e4194c;
   font-size: 2.5em;
+  padding: 0 .75em;
 }
 
 .container {
-  max-width: 400px;
+  max-width: 500px;
 }
 
 hr {
@@ -32,5 +33,10 @@ hr {
 
 #question {
   font-size: 1.35em;
+}
+
+.response {
+  font-weight: bold;
+  margin-top: 2rem;
 }
 /*# sourceMappingURL=styles.css.map */

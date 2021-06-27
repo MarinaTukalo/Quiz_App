@@ -28,7 +28,7 @@ startQuiz.addEventListener('click', e => {
 let count = 0;
 const updateUI = (data) => {
     const entries = data.results;
-    console.log(entries);
+    //console.log(entries);
 
     if (entries.length == 0) {
         console.log('No results returned.');
@@ -68,7 +68,7 @@ const getQuestion = (data) => {
     for (let i = 0; i < entries[count].incorrect_answers.length; i++) {
         answers.push(entries[count].incorrect_answers[i]);
     }
-    console.table(answers);
+    //console.table(answers);
     /* randomise order of answers */
 
     answers.sort(() => Math.random() - 0.5);
@@ -111,12 +111,14 @@ const getQuestion = (data) => {
             let words = ['Good for you!', 'That’s really nice', 'Superb', 'That’s great!', 'You’ve got it made', 'Way to go!', 'Terrific', 'That’s the way to do it!', 'Good thinking', 'Marvelous', 'Keep up the good work', 'That’s it!', 'You’re on the right track now!', 'You haven’t missed a thing', 'Outstanding!', 'Fantastic!', 'You’re doing a good job', 'Good work', 'Right on!', 'Well, look at you go!', 'Tremendous!', 'That’s RIGHT!', 'Perfect!', 'You must have been practicing!', 'Nice going', 'Great!', 'You remembered!', 'WOW!', 'Wonderful!', 'You’re really working hard today', 'I knew you could do it!', 'I’m very proud of you', 'Fine!', 'Super!', 'That’s good', 'Good job', 'Keep it up!', 'Good remembering', 'Congratulations', 'Nothing can stop you now', 'Exactly right!', 'Excellent!', 'Sensational!', 'You’re doing beautifully', 'I’ve never seen anyone do it better', 'You’ve just mastered that!', 'You are very good at that'];
             let randomNumber = Math.round(Math.random() * (words.length - 1));
 
-            displayCorrect.style.backgroundColor = '#44d134';
-            displayCorrect.innerHTML = `<p class="p-3">${words[randomNumber]}</p>`;
+            displayCorrect.style.backgroundColor = '#06c9b6';
+            displayCorrect.style.color = '#fff';
+            displayCorrect.innerHTML = `<p class="p-3 response">${words[randomNumber]}</p>`;
             score += 10;
         } else {
-            displayCorrect.style.backgroundColor = '#e5245d';
-            displayCorrect.innerHTML = `<p class="p-3">ups..wrong. The right one is ${entries[count-1].correct_answer}</p>`;
+            displayCorrect.style.backgroundColor = '#c90671';
+            displayCorrect.style.color = '#fff';
+            displayCorrect.innerHTML = `<p class="p-3 response">ups..wrong. The right one is ${entries[count-1].correct_answer}</p>`;
         }
         nextBtn.classList.remove('disabled');
 

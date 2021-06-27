@@ -9,10 +9,11 @@
     <!--bootstrap v.5.0.0-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- google font-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Neucha&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Quizz_Time</title>
+    <title>QuizTime</title>
 </head>
 
 <body>
@@ -20,13 +21,13 @@
     <!-- result section-->
     <div class='result d-none py-2 text-center'>
         <div>
-            <p>You have <span>0 points of 10</span> for this quiz</p>
+            <p>You have answered <span>0 points of 10</span> of this quiz right</p>
         </div>
     </div>
     <div class='container my-2 mx-auto'>
         <!-- quiz section -->
         <div class='d-flex justify-content-center'>
-            <a class='btn btn-warning mt-3' id='startQuiz'>start quiz</a>
+            <a class='btn btn-dark mt-3' id='startQuiz'>START</a>
         </div>
 
         <!-- Cards with questions -->
@@ -39,8 +40,8 @@
                 <hr>
                 <div id='allAnswers' class="my-3"></div>
                 <div class="d-flex row justify-content-around my-3">
-                    <a class='col-6 btn btn-danger' id='checkAnswer'>check</a>
-                    <a class='col-4 btn btn-success disabled' id='nextBtn'>next</a>
+                    <a class='col-6 btn btn-outline-dark' id='checkAnswer'>check</a>
+                    <a class='col-4 btn btn-dark disabled' id='nextBtn'>next</a>
                 </div>
                 <p class='text-center d-none' id='displayCorrect'></p>
             </div>
